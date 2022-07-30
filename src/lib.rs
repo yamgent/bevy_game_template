@@ -2,12 +2,14 @@ mod actions;
 mod audio;
 mod loading;
 mod menu;
+mod pixelview;
 mod player;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
 use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
+use crate::pixelview::PixelViewPlugin;
 use crate::player::PlayerPlugin;
 
 use bevy::app::App;
@@ -33,6 +35,7 @@ pub struct GamePlugin;
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_state(GameState::Loading)
+            .add_plugin(PixelViewPlugin)
             .add_plugin(LoadingPlugin)
             .add_plugin(MenuPlugin)
             .add_plugin(ActionsPlugin)
